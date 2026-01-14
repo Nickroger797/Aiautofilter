@@ -4,13 +4,15 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQ
 from imdb import IMDb
 from motor.motor_asyncio import AsyncIOMotorClient
 
-# --- CONFIGURATION ---
-API_ID = 12345678  # यहाँ अपना असली नंबर डालें, ' ' मत लगाना
-API_HASH = "b123456789abcdef0123456789abcdef"  # अपना असली हैश यहाँ डालें
-BOT_TOKEN = "123456789:ABCDefghIJKLmnopQRSTuv"  # अपना असली बॉट टोकन यहाँ डालें
-MONGO_URI = "mongodb+srv://user:pass@cluster.mongodb.net/..." # अपना डेटाबेस लिंक
-ADMIN_ID = 123456789 # अपनी टेलीग्राम ID
-FSUB_ID = -100123456789 # अपने चैनल की ID
+import os  # इसे सबसे ऊपर जोड़ें
+
+# --- CONFIGURATION (Koyeb Environment से डेटा उठाना) ---
+API_ID = int(os.environ.get("API_ID")) # कोट्स की ज़रूरत नहीं, यह सीधे उठा लेगा
+API_HASH = os.environ.get("API_HASH")
+BOT_TOKEN = os.environ.get("BOT_TOKEN")
+MONGO_URI = os.environ.get("MONGO_URI")
+ADMIN_ID = int(os.environ.get("ADMIN_ID", "123456789")) # डिफ़ॉल्ट वैल्यू या Environment से
+FSUB_ID = int(os.environ.get("FSUB_ID", "-100123456789"))
 
 # --- INITIALIZATION ---
 app = Client("UltimateBot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
