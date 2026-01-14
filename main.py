@@ -125,4 +125,28 @@ async def index_bot(client, message):
             )
     await message.reply("✅ चैनल इंडेक्स हो गया!")
 
+from http.server import BaseHTTPRequestHandler, HTTPServer
+import threading
+
+# --- 1. Fake Web Server (Koyeb Health Check Fix) ---
+class HealthCheckHandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(b"Bot is Running!")
+
+def run_health_server():
+    port = int(os.environ.get("PORT", 8080))
+    server = HTTPServer(('0.0.0.0', port), HealthCheckHandler)
+    server.serve_forever()
+
+# --- बाकी सारा कोड (Config, Clients, आदि) यहाँ रहेगा ---
+
+if __name__ == "__main__":
+    # हेल्थ चेक सर्वर को अलग धागे (Thread) में चलाएं
+    threading.Thread(target=run_health_server, daemon=True).start()
+    
+    print("🚀 बॉट शुरू हो रहा है और हेल्थ चेक पोर्ट ओपन है...")
+    app.run()
+    
 app.run()
