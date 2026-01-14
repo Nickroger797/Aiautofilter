@@ -5,12 +5,12 @@ from imdb import IMDb
 from motor.motor_asyncio import AsyncIOMotorClient
 
 # --- CONFIGURATION ---
-API_ID = "YOUR_API_ID"
-API_HASH = "YOUR_API_HASH"
-BOT_TOKEN = "YOUR_BOT_TOKEN"
-MONGO_URI = "YOUR_MONGODB_URI"
-ADMIN_ID = 123456789 # अपनी ID यहाँ डालें
-FSUB_ID = -100123456789 # Force Sub Channel ID
+API_ID = 12345678  # यहाँ अपना असली नंबर डालें, ' ' मत लगाना
+API_HASH = "b123456789abcdef0123456789abcdef"  # अपना असली हैश यहाँ डालें
+BOT_TOKEN = "123456789:ABCDefghIJKLmnopQRSTuv"  # अपना असली बॉट टोकन यहाँ डालें
+MONGO_URI = "mongodb+srv://user:pass@cluster.mongodb.net/..." # अपना डेटाबेस लिंक
+ADMIN_ID = 123456789 # अपनी टेलीग्राम ID
+FSUB_ID = -100123456789 # अपने चैनल की ID
 
 # --- INITIALIZATION ---
 app = Client("UltimateBot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
