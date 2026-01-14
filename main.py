@@ -76,7 +76,7 @@ async def filter_engine(client, message):
         await client.get_chat_member(FSUB_ID, user_id)
     except:
         return await message.reply("⚠️ **एक्सेस लॉक!** पहले चैनल जॉइन करें।",
-            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Join Channel", url="t.me/yourlink")]]))
+            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Join Channel", url="t.me/codexmoviesgroup")]]))
 
     # Feature: Daily Limit System
     if not await check_limits(user_id):
